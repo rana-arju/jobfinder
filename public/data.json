@@ -55,7 +55,7 @@
     "location": "Chicago, IL",
     "job_type": "Part-time",
     "experience": "No experience required",
-    "salary_range": "$12 - $15 per hour",
+    "salary_range": "$12 - $15",
     "email": "jobs@retailco.com",
     "phone_number": "(555) 555-5555"
   },
@@ -115,7 +115,7 @@
     "location": "Miami, FL",
     "job_type": "hybrid",
     "experience": "No experience required",
-    "salary_range": "$15 - $20 per hour",
+    "salary_range": "$15 - $20",
     "email": "jobs@internetco.com",
     "phone_number": "(555) 555-5555"
   },

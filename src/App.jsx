@@ -36,7 +36,7 @@ function App() {
     },
   ];
   const [jobs, setJobs] = useState([]);
-
+  const [length, setLength] = useState(6);
   useEffect(() => {
     axios
       .get("data.json")
@@ -70,9 +70,18 @@ function App() {
             need. Its your future
           </p>
         </div>
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-          {jobs && jobs.map((job) => <Job key={job.id} job={job} />)}
-        </div> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+          {jobs &&
+            jobs.slice(0, length).map((job) => <Job key={job.id} job={job} />)}
+        </div>
+        {jobs && jobs.length !== length && (
+          <button
+            className="btn btn-outline border mx-auto block mt-10  border-[#818DFE] hover:bg-[#818DFE] outline-none hover:border-[#818DFE]"
+            onClick={() => setLength(jobs?.length)}
+          >
+            See all jobs
+          </button>
+        )}
       </div>
 
       <Footer />
