@@ -1,7 +1,6 @@
 import React from "react";
 
 const Category = ({ cat }) => {
-  console.log(cat);
   return (
     <div className="card card-compact bg-[#FAF8FF]  py-8">
       <figure>
