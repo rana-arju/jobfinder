@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
+import Header from "../header/Header";
+import axios from "axios";
+import { GoLocation } from "react-icons/go";
+import { AiOutlineDollarCircle, AiOutlineMail } from "react-icons/ai";
+import { SlCalender } from "react-icons/sl";
+import { CiLocationOn } from "react-icons/ci";
+import { FiPhoneCall } from "react-icons/fi";
+
+const Details = () => {
+  let { id } = useParams();
+  const data = useLoaderData();
+
+  const result = data.find((job) => job.id === Number(id));
+const handleApply = (result) => {
+    console.log(result);
+
+}
+  return (
+    <div>
+      <Header />
+      {result && (
+        <>
+          <div className="py-20 text-center text-3xl font-bold bg-[#FAF8FF] uppercase">
+            Job Details
+          </div>
+          <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 my-20">
+            <div>
+              <p className="my-5">
+                <span className="font-bold text-xl">Job Description:</span>{" "}
+                <span className="text-gray-500">{result.description}</span>
+              </p>
+              <p className="my-5">
+                <span className="font-bold text-xl">Job Description:</span>{" "}
+                <span className="text-gray-500">
+                  {result.job_responsibility}
+                </span>
+              </p>
+              <b>Educational Requirements:</b>
+              <p className="text-gray-500">{result.education_requirement}</p>
+              <b>Experiences:</b>
+              <p className="text-gray-500">{result.experience}</p>
+            </div>
+            <div>
+              <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                  <h2 className="card-title">Job Details</h2>
+                  <hr />
+                  <div className="flex justify-start items-center gap-2 font-bold">
+                    <AiOutlineDollarCircle />{" "}
+                    <span>Salary: {result.salary_range}</span>
+                  </div>
+                  <div className="flex justify-start items-center gap-2 font-bold">
+                    <SlCalender /> <span>Job title: {result.title}</span>
+                  </div>
+                  <b className="text-xl">Contact Information</b>
+                  <hr />
+                  <div className="flex justify-start items-center gap-2 font-bold">
+                    <FiPhoneCall /> <span>Phone: {result.phone_number}</span>
+                  </div>{" "}
+                  <div className="flex justify-start items-center gap-2 font-bold">
+                    <AiOutlineMail /> <span>Phone: {result.email}</span>
+                  </div>
+                  <div className="flex justify-start items-center gap-2 font-bold">
+                    <CiLocationOn /> <span>Address: {result.location}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-10 block">
+                <button className="btn btn-primary btn-wide" onClick={() => handleApply(result)}>Apply Now</button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Details;

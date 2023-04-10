@@ -1,9 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { GoLocation } from "react-icons/go";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 const Job = ({ job }) => {
+  const history = useNavigate();
+
   const handleJob = (id) => {
     console.log(id);
+    history(`/details/${id}`);
   };
   return (
     <div className="card card-compact bg-[#FAF8FF]  py-8">
