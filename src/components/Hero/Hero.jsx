@@ -9,7 +9,7 @@ const Hero = () => {
         <img src={hero} className=" rounded-lg shadow-2xl" />
         </div>
         <div>
-          <h1 className="text-5xl font-bold">
+          <h1 className="text-3xl md:text-5xl font-bold">
             One Step Closer To Your{" "}
             <span className="text-blue-500">Dream Job</span>
           </h1>
