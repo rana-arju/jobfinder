@@ -70,7 +70,7 @@ const Statistic = () => {
       <Header />
       <div className="w-10/12 mx-auto mt-20 flex justify-center flex-col items-center">
         <h2 className=" text-2xl font-bold border-b pb-4 inline-block border-b-1">
-          My Assignment Statistic
+          My 8 Assignment Statistic
         </h2>
         <PieChart width={300} height={300}>
           <Pie
@@ -109,21 +109,3 @@ const Statistic = () => {
 };
 
 export default Statistic;
-
-//  <AreaChart
-//    width={500}
-//    height={300}
-//    data={data}
-//    margin={{
-//      top: 5,
-//      right: 30,
-//      left: 20,
-//      bottom: 5,
-//    }}
-//  >
-//    <YAxis />
-//    <Tooltip />
-//    <XAxis dataKey="name" />
-//    <Legend />
-//    <Area type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-//  </AreaChart>;
