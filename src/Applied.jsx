@@ -2,14 +2,26 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/header/Header";
 import AppliedJob from "./components/appliedJob/AppliedJob";
 import Footer from "./components/footer/Footer";
+const jobTypes = ["Full-time", "Part-time", "Remote"];
 
 const Applied = () => {
+  const [selectedJobType, setSelectedJobType] = useState("");
+
   const [applied, setApplied] = useState(
     JSON.parse(localStorage.getItem("apply")) || []
   );
   useEffect(() => {
     setApplied(JSON.parse(localStorage.getItem("apply")) || []);
-  }, []);
+  }, [selectedJobType]);
+  const handleJobTypeChange = (event) => {
+    setSelectedJobType(event.target.value);
+  };
+
+  let filteredJobs = selectedJobType
+    ? applied.filter((job) => job.job_type == selectedJobType)
+    : applied;
+
+  console.log("applied", filteredJobs);
   return (
     <div>
       <Header />
@@ -19,8 +31,24 @@ const Applied = () => {
             Job Details
           </div>
           <div className="w-10/12 mx-auto">
-            {applied &&
-              applied.map((job) => <AppliedJob job={job} key={job.id} />)}
+            <div className="flex justify-end my-10 pb-0">
+              <select
+                className="select select-bordered"
+                value={selectedJobType}
+                onChange={handleJobTypeChange}
+              >
+                <option selected value="">
+                  Filter By
+                </option>
+                {jobTypes.map((jobType) => (
+                  <option key={jobType} value={jobType}>
+                    {jobType}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {filteredJobs &&
+              filteredJobs.map((job) => <AppliedJob job={job} key={job.id} />)}
           </div>
         </>
       ) : (
