@@ -11,10 +11,17 @@ import { toast } from "react-toastify";
 const Details = () => {
   let { id } = useParams();
   const data = useLoaderData();
+  const [jobs, setJobs] = useState(
+    JSON.parse(localStorage.getItem("jobs")) || data
+  );
+
+ 
+
+  console.log("hello", jobs);
   const [apply, setApply] = useState(
     JSON.parse(localStorage.getItem("apply")) || []
   );
-  const result = data.find((job) => job.id === Number(id));
+  const result = jobs.find((job) => job.id === Number(id));
   const check = apply.some((item) => item.id === result.id);
   const handleApply = (result) => {
     if (check) {
@@ -25,7 +32,6 @@ const Details = () => {
       return toast.success("This job apply successful!");
     }
   };
-  console.log(apply);
 
   return (
     <div>

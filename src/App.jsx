@@ -16,7 +16,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-
   const category = [
     {
       icon: icon1,
@@ -47,6 +46,8 @@ function App() {
       .then((response) => setJobs(response.data))
       .catch((error) => console.log(error));
   }, []);
+  localStorage.setItem("jobs", JSON.stringify(jobs));
+
   return (
     <>
       <Header />
@@ -75,11 +76,7 @@ function App() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
           {jobs &&
-            jobs
-              .slice(0, length)
-              .map((job) => (
-                <Job key={job.id} job={job} />
-              ))}
+            jobs.slice(0, length).map((job) => <Job key={job.id} job={job} />)}
         </div>
         {jobs && jobs.length !== length && (
           <button
