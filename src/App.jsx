@@ -39,7 +39,7 @@ function App() {
     },
   ];
   const [jobs, setJobs] = useState([]);
-  const [length, setLength] = useState(6);
+  const [length, setLength] = useState(4);
   useEffect(() => {
     axios
       .get("data.json")

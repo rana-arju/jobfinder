@@ -28,7 +28,7 @@ const Applied = () => {
       {applied ? (
         <>
           <div className="py-20 text-center text-3xl font-bold bg-[#FAF8FF] uppercase">
-            Job Details
+            Applied Jobs
           </div>
           <div className="w-10/12 mx-auto">
             <div className="flex justify-end my-10 pb-0">
