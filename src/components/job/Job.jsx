@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { GoLocation } from "react-icons/go";
 import { AiOutlineDollarCircle } from "react-icons/ai";
-const Job = ({ job }) => {
+const Job = ({ job}) => {
   const history = useNavigate();
 
   const handleJob = (id) => {

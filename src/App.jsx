@@ -12,7 +12,11 @@ import icon4 from "./assets/Icons/chip 1.png";
 import Category from "./components/category/Category";
 import Job from "./components/job/Job";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 function App() {
+
   const category = [
     {
       icon: icon1,
@@ -72,7 +76,11 @@ function App() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
           {jobs &&
-            jobs.slice(0, length).map((job) => <Job key={job.id} job={job} />)}
+            jobs
+              .slice(0, length)
+              .map((job) => (
+                <Job key={job.id} job={job} />
+              ))}
         </div>
         {jobs && jobs.length !== length && (
           <button
@@ -85,6 +93,7 @@ function App() {
       </div>
 
       <Footer />
+      <ToastContainer />
     </>
   );
 }

@@ -7,16 +7,28 @@ import { AiOutlineDollarCircle, AiOutlineMail } from "react-icons/ai";
 import { SlCalender } from "react-icons/sl";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Details = () => {
   let { id } = useParams();
   const data = useLoaderData();
-
+  const [apply, setApply] = useState(
+    JSON.parse(localStorage.getItem("apply")) || []
+  );
   const result = data.find((job) => job.id === Number(id));
-const handleApply = (result) => {
-    console.log(result);
+  const handleApply = (result) => {
+    const check = apply.some((item) => item.id === result.id);
 
-}
+    if (check) {
+      return toast.error("This job already applied");
+    } else {
+      setApply([...apply, result]);
+      localStorage.setItem("apply", JSON.stringify([...apply, result]));
+      return toast.success("This job apply successful!");
+    }
+  };
+  console.log(apply);
+
   return (
     <div>
       <Header />
@@ -68,7 +80,12 @@ const handleApply = (result) => {
                 </div>
               </div>
               <div className="mt-10 block">
-                <button className="btn btn-primary btn-wide" onClick={() => handleApply(result)}>Apply Now</button>
+                <button
+                  className="btn btn-primary btn-wide"
+                  onClick={() => handleApply(result)}
+                >
+                  Apply Now
+                </button>
               </div>
             </div>
           </div>
