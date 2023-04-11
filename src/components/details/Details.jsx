@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../header/Header";
-import axios from "axios";
-import { GoLocation } from "react-icons/go";
+
 import { AiOutlineDollarCircle, AiOutlineMail } from "react-icons/ai";
 import { SlCalender } from "react-icons/sl";
 import { CiLocationOn } from "react-icons/ci";
@@ -16,9 +15,8 @@ const Details = () => {
     JSON.parse(localStorage.getItem("apply")) || []
   );
   const result = data.find((job) => job.id === Number(id));
+  const check = apply.some((item) => item.id === result.id);
   const handleApply = (result) => {
-    const check = apply.some((item) => item.id === result.id);
-
     if (check) {
       return toast.error("This job already applied");
     } else {
@@ -55,7 +53,7 @@ const Details = () => {
               <p className="text-gray-500">{result.experience}</p>
             </div>
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-[#F3F2FF] shadow-xl">
                 <div className="card-body">
                   <h2 className="card-title">Job Details</h2>
                   <hr />
@@ -66,7 +64,7 @@ const Details = () => {
                   <div className="flex justify-start items-center gap-2 font-bold">
                     <SlCalender /> <span>Job title: {result.title}</span>
                   </div>
-                  <b className="text-xl">Contact Information</b>
+                  <b className="text-xl mt-10 mb-2">Contact Information</b>
                   <hr />
                   <div className="flex justify-start items-center gap-2 font-bold">
                     <FiPhoneCall /> <span>Phone: {result.phone_number}</span>
@@ -82,9 +80,10 @@ const Details = () => {
               <div className="mt-10 block">
                 <button
                   className="btn btn-primary btn-wide"
+                  disabled={check}
                   onClick={() => handleApply(result)}
                 >
-                  Apply Now
+                  {check ? "Already Apply" : " Apply Now"}
                 </button>
               </div>
             </div>

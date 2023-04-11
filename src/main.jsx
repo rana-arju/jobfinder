@@ -7,6 +7,7 @@ import Blog from "./Blog";
 import Statistic from "./Statistic";
 import Applied from "./Applied";
 import Details from "./components/details/Details";
+import { ToastContainer } from "react-toastify";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,5 +38,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer />
   </React.StrictMode>
 );

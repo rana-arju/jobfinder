@@ -47,7 +47,6 @@ function App() {
       .then((response) => setJobs(response.data))
       .catch((error) => console.log(error));
   }, []);
-  console.log(jobs);
   return (
     <>
       <Header />
@@ -93,7 +92,6 @@ function App() {
       </div>
 
       <Footer />
-      <ToastContainer />
     </>
   );
 }
