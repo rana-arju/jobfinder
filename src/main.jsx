@@ -8,6 +8,7 @@ import Statistic from "./Statistic";
 import Applied from "./Applied";
 import Details from "./components/details/Details";
 import { ToastContainer } from "react-toastify";
+import Error from "./Error";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h2>Oops!</h2>,
+    element: <Error />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
