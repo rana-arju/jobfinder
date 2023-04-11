@@ -18,10 +18,13 @@ const Job = ({ job}) => {
       <div className="card-body">
         <h2 className="card-title">{job.title}</h2>
         <p>{job.company_name}</p>
-        <div>
-          <button className="btn btn-sm btn-outline border  border-[#818DFE] hover:bg-[#818DFE] outline-none hover:border-[#818DFE]">
-            {job.job_type}
-          </button>
+        <div className="flex gap-4">
+          {job.job_type &&
+            job.job_type.map((type, i) => (
+              <button key={i} className="btn btn-sm btn-outline border  border-[#818DFE] hover:bg-[#818DFE] outline-none hover:border-[#818DFE]">
+                {type}
+              </button>
+            ))}
         </div>
         <div className="flex justify-start items-center gap-4">
           <div className="flex justify-start items-center gap-2 font-bold">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/header/Header";
 import AppliedJob from "./components/appliedJob/AppliedJob";
 import Footer from "./components/footer/Footer";
-const jobTypes = ["Full-time", "Part-time", "Remote"];
+const jobTypes = ["On-site", "Remote"];
 
 const Applied = () => {
   const [selectedJobType, setSelectedJobType] = useState("");
@@ -18,7 +18,7 @@ const Applied = () => {
   };
 
   let filteredJobs = selectedJobType
-    ? applied.filter((job) => job.job_type == selectedJobType)
+    ? applied.filter((job) => job.job_type[0] == selectedJobType)
     : applied;
 
   console.log("applied", filteredJobs);

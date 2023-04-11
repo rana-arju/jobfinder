@@ -66,7 +66,7 @@ function App() {
           ))}
         </div>
       </div>
-      <div className="my-20 w-10/12 mx-auto">
+      <div className="my-20 w-10/12 mx-auto" id="jobs">
         <div className="text-center">
           <h2 className="text-3xl font-bold">Featured Jobs</h2>
           <p className="text-gray-500">
